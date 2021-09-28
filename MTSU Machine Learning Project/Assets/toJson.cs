@@ -31,6 +31,6 @@ public class toJson : MonoBehaviour
     }
 
     private string GetFilePath(string fileName) {
-        return Application.persistentDataPath + "/" + fileName;
+        return Application.dataPath + "/" + fileName;
     }
 }
