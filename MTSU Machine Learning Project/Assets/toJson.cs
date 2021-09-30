@@ -7,7 +7,7 @@ using System.IO;
 public class toJson : MonoBehaviour
 {
     public Data data;
-    private string file = "unityJson.txt";
+    private string file = "unityJson.json";
     public GameObject nameInputField;
     public GameObject patientInputField;
     public GameObject codeInputField;
