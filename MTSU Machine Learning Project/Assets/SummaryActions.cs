@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using AppData;
 
+
 public class SummaryActions : MonoBehaviour
 {
 	//Function mostly for testing purposes
