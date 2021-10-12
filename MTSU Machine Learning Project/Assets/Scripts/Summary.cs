@@ -12,10 +12,10 @@ public class Summary : MonoBehaviour
 {
 	// These would be initialized in the dataclass
 	public Session session = new Session();
-	public Text high;
-	public Text medium;
-	public Text low;
-	public Text lengthOfSession;
+	// public Text high;
+	// public Text medium;
+	// public Text low;
+	// public Text lengthOfSession;
 
 	// Only here as example usage. The variables would be 
 	// set through the lifespan of the session
@@ -37,10 +37,10 @@ public class Summary : MonoBehaviour
 			new AppData.Time("Low") 
 		};
 
-		high.text = session.data.buttons.high.ToString();
-		medium.text = session.data.buttons.medium.ToString();
-		low.text = session.data.buttons.low.ToString();
-		lengthOfSession.text = session.metaData.lengthOfSession.ToString();
+		// high.text = session.data.buttons.high.ToString();
+		// medium.text = session.data.buttons.medium.ToString();
+		// low.text = session.data.buttons.low.ToString();
+		// lengthOfSession.text = session.metaData.lengthOfSession.ToString();
 	}
 
 	// Reads data from exisitng json file

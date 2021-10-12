@@ -22,7 +22,6 @@ public class toJson : MonoBehaviour
         WriteToFile(file, json);
     }
 
-
     private void WriteToFile(string fileName, string json) {
         string path = GetFilePath(fileName);
         FileStream fileStream = new FileStream(path, FileMode.Create);
