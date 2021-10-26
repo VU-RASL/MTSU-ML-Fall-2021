@@ -4,18 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Session : Singleton<Session>
+public class SessionData
 {
     //Auto generated
     public string sessionId {get;set;} = "sessid";
     public Data data = new Data();
     public SessionMetaData metaData = new SessionMetaData();
-    
-    //Create new session with State.NewSession("someid")
-    // public Session(string id)
-    // {
-    //     sessionId = id;
-    // }
 }
 public class SessionMetaData
 {

@@ -14,14 +14,21 @@ Menu functions
 */
 public class Menu : MonoBehaviour
 {
-    public GameObject nameInputField;
-    public GameObject patientInputField;
-    public GameObject codeInputField;
+    public GameObject NameInputField;
+    public GameObject PatientInputField;
+    public GameObject CodeInputField;
     public void MenuToMain()
-    {
-        Session.Instance.Awake();
-        Debug.Log(Session.Instance.sessionId);
+    { 
+        print(CodeInputField.GetComponent<Text>().text);
+        string code = CodeInputField.GetComponent<Text>().text;
+        string id = PatientInputField.GetComponent<Text>().text;
+        string name = NameInputField.GetComponent<Text>().text;
+        Session Session = Session.Instance;
+        Session.session.data.name = name;
+        Session.session.data.patientId = id;
+        Session.session.data.code = code;
 
+        Session.PrintSession(); 
         SceneManager.LoadScene(1);
     }
 }

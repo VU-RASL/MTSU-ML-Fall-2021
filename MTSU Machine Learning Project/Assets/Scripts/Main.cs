@@ -16,7 +16,7 @@ public class Main : MonoBehaviour
 {
 
     public Time[] times;
-    public Session session = Session.Instance;
+    public Session Session = Session.Instance;
 
     public void MainToSummary(string id) 
     {
@@ -25,20 +25,17 @@ public class Main : MonoBehaviour
     }
     public void High()
     {
-        session.data.buttons.high++;
-		session.data.times.Add(new Time("h", session.metaData.StartTime));
-        Debug.Log(session.data.buttons.high);
+        Session.session.data.buttons.high++;
+		Session.session.data.times.Add(new Time("h", Session.session.metaData.StartTime));
     }
     public void Med()
     {
-        session.data.buttons.medium ++;
-		session.data.times.Add(new Time("m", session.metaData.StartTime));
-        Debug.Log(session.data.buttons.medium);
+        Session.session.data.buttons.medium ++;
+		Session.session.data.times.Add(new Time("m", Session.session.metaData.StartTime));
     }
     public void Low()
     {
-        session.data.buttons.low++;
-		session.data.times.Add(new Time("l", session.metaData.StartTime));
-        Debug.Log(session.data.buttons.low);
+        Session.session.data.buttons.low++;
+		Session.session.data.times.Add(new Time("l", Session.session.metaData.StartTime));
     }
 }
