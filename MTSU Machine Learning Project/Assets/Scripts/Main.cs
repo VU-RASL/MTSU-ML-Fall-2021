@@ -16,26 +16,26 @@ public class Main : MonoBehaviour
 {
 
     public Time[] times;
-    public Session Session = Session.Instance;
+    public Session mainSess = Session.Instance;
 
-    public void MainToSummary(string id) 
+    public void MainToSummary() 
     {
         SceneManager.LoadScene(2);
         //Transition to summary page
     }
     public void High()
     {
-        Session.session.data.buttons.high++;
-		Session.session.data.times.Add(new Time("h", Session.session.metaData.StartTime));
+        mainSess.session.data.buttons.high++;
+		mainSess.session.data.times.Add(new Time("h", mainSess.session.metaData.StartTime));
     }
     public void Med()
     {
-        Session.session.data.buttons.medium ++;
-		Session.session.data.times.Add(new Time("m", Session.session.metaData.StartTime));
+        mainSess.session.data.buttons.medium ++;
+		mainSess.session.data.times.Add(new Time("m", mainSess.session.metaData.StartTime));
     }
     public void Low()
     {
-        Session.session.data.buttons.low++;
-		Session.session.data.times.Add(new Time("l", Session.session.metaData.StartTime));
+        mainSess.session.data.buttons.low++;
+		mainSess.session.data.times.Add(new Time("l", mainSess.session.metaData.StartTime));
     }
 }

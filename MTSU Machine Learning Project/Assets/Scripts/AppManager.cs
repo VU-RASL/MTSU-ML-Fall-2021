@@ -26,5 +26,6 @@ public class Session{
 		session.metaData.lengthOfSession = session.metaData.StartTime - DateTime.Now;
 
 		var updatedJson = JsonConvert.SerializeObject(session);
+        Debug.Log(updatedJson);
 	}
 }
