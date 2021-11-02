@@ -10,35 +10,61 @@ using UnityEngine.SceneManagement;
 
 public class Summary : MonoBehaviour
 {
-	Session Session = Session.Instance;
-	// Reads data from exisitng json file
+	Session sumSess = Session.Instance;
+	public Text High;
+	public Text Medium ;
+	public Text Low;
+	public Text SessionTime;
+
+	private void Awake ()
+	{
+		sumSess.session.metaData.EndTime = DateTime.Now;
+		sumSess.session.metaData.lengthOfSession = DateTime.Now - sumSess.session.metaData.StartTime;
+		if(!High) {
+			High = GetComponent<Text>();
+			Medium = GetComponent<Text>();
+			Low = GetComponent<Text>();
+			SessionTime = GetComponent<Text>();
+		}else{
+
+			High.text= sumSess.session.data.buttons.high.ToString();
+			Medium.text= sumSess.session.data.buttons.medium.ToString();
+			Low.text= sumSess.session.data.buttons.low.ToString();
+			SessionTime.text= sumSess.session.metaData.lengthOfSession.ToString();
+		}
+	}
+
 	public List<SessionData> GetJsonSessions(string path)
 	{
 		string file = File.ReadAllText(@path);
 		return JsonConvert.DeserializeObject<List<SessionData>>(file);
 	}
-	// Add a Session parameter and call WriteSession(Session) in the summary page
-	public void AddSession()
+
+	public void NextSession()
+	{
+		WriteSession();
+		sumSess.session = new SessionData();
+		SceneManager.LoadScene(0);
+	}
+	public void WriteSession()
 	{
 		//Reads multiple sessions
 		List<SessionData> sessions = GetJsonSessions("./Assets/DataStore.json");
 
-		// Sets meta data about the session
-		Session.session.metaData.EndTime = DateTime.Now;
-		Session.session.metaData.lengthOfSession = Session.session.metaData.StartTime - DateTime.Now;
-
+		var lastsessid = File.ReadAllText(@"./Assets/sessid.txt");
+		Debug.Log(lastsessid);
+		sumSess.session.sessionId = Int32.Parse(lastsessid) + 1;
+	
 		// Appends single session object to end of list to write to new json file
-		sessions.Add(Session.session);
+		sessions.Add(sumSess.session);
 		var updatedJson = JsonConvert.SerializeObject(sessions);
+		File.WriteAllText(@"./Assets/sessid.txt", sumSess.session.sessionId.ToString());
 		File.WriteAllText(@"./Assets/DataStore.json", updatedJson);
-		SceneManager.LoadScene(0);
 	}
-	public void PrintSession()
+	public void EndSession()
 	{
-		Session.session.metaData.EndTime = DateTime.Now;
-		Session.session.metaData.lengthOfSession = Session.session.metaData.StartTime - DateTime.Now;
-
-		var updatedJson = JsonConvert.SerializeObject(Session.session);
-		Debug.Log(updatedJson.ToString());
+		WriteSession();
+		sumSess.session = new SessionData();
+		// UnityEditor.EditorApplication.isPlaying = false;
 	}
 }

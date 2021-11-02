@@ -19,16 +19,15 @@ public class Menu : MonoBehaviour
     public GameObject CodeInputField;
     public void MenuToMain()
     { 
-        print(CodeInputField.GetComponent<Text>().text);
-        string code = CodeInputField.GetComponent<Text>().text;
-        string id = PatientInputField.GetComponent<Text>().text;
-        string name = NameInputField.GetComponent<Text>().text;
-        Session Session = Session.Instance;
-        Session.session.data.name = name;
-        Session.session.data.patientId = id;
-        Session.session.data.code = code;
-
-        Session.PrintSession(); 
+        string codeId = "", id = "", nameId = "";
+        codeId = CodeInputField.GetComponentInChildren<Text>().text;
+        id = PatientInputField.GetComponentInChildren<Text>().text;
+        nameId = NameInputField.GetComponentInChildren<Text>().text;
+        Session menuSess = Session.Instance;
+        menuSess.session.data.name = nameId;
+        menuSess.session.data.patientId = id;
+        menuSess.session.data.code = codeId;
+ 
         SceneManager.LoadScene(1);
     }
 }

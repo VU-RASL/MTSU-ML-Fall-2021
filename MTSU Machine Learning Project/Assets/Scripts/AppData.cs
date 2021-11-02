@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class SessionData
 {
     //Auto generated
-    public string sessionId {get;set;} = "sessid";
+    public int sessionId {get;set;}
     public Data data = new Data();
     public SessionMetaData metaData = new SessionMetaData();
 }
@@ -29,9 +29,9 @@ public class Data
 }
 public class ButtonData 
 {
-    public int high {get;set;} = 0;
-    public int medium {get;set;} = 0;
-    public int low {get;set;} = 0;
+    public int high = 0;
+    public int medium = 0;
+    public int low = 0;
 }
 public class Time
 {
