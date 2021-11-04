@@ -65,6 +65,7 @@ public class Summary : MonoBehaviour
 	{
 		WriteSession();
 		sumSess.session = new SessionData();
+		Application.Quit();
 		// UnityEditor.EditorApplication.isPlaying = false;
 	}
 }
