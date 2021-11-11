@@ -6,31 +6,40 @@ using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 
 public class Summary : MonoBehaviour
 {
 	Session sumSess = Session.Instance;
-	public Text High;
-	public Text Medium ;
-	public Text Low;
-	public Text SessionTime;
+	public TMP_Text High;
+	public TMP_Text Medium ;
+	public TMP_Text Low;
+	public TMP_Text SessionTime;
 
 	private void Awake ()
 	{
 		sumSess.session.metaData.EndTime = DateTime.Now;
 		sumSess.session.metaData.lengthOfSession = DateTime.Now - sumSess.session.metaData.StartTime;
 		if(!High) {
-			High = GetComponent<Text>();
-			Medium = GetComponent<Text>();
-			Low = GetComponent<Text>();
-			SessionTime = GetComponent<Text>();
+			High = GetComponent<TMP_Text>();
+			Medium = GetComponent<TMP_Text>();
+			Low = GetComponent<TMP_Text>();
+			SessionTime = GetComponent<TMP_Text>();
 		}else{
 
+			TimeSpan length = sumSess.session.metaData.lengthOfSession;
 			High.text= sumSess.session.data.buttons.high.ToString();
 			Medium.text= sumSess.session.data.buttons.medium.ToString();
 			Low.text= sumSess.session.data.buttons.low.ToString();
-			SessionTime.text= sumSess.session.metaData.lengthOfSession.Minutes.ToString() + " mins";
+			if(length.Minutes == 0)
+			{
+				SessionTime.text= length.Seconds.ToString() + " sec";
+			}
+			else
+			{
+				SessionTime.text= length.Minutes.ToString() + " mins";
+			}
 		}
 	}
 
