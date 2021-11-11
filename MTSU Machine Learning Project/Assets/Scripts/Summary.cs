@@ -30,7 +30,7 @@ public class Summary : MonoBehaviour
 			High.text= sumSess.session.data.buttons.high.ToString();
 			Medium.text= sumSess.session.data.buttons.medium.ToString();
 			Low.text= sumSess.session.data.buttons.low.ToString();
-			SessionTime.text= sumSess.session.metaData.lengthOfSession.ToString();
+			SessionTime.text= sumSess.session.metaData.lengthOfSession.Minutes.ToString() + " mins";
 		}
 	}
 
@@ -49,15 +49,22 @@ public class Summary : MonoBehaviour
 	public void WriteSession()
 	{
 		//Reads multiple sessions
-		List<SessionData> sessions = GetJsonSessions("./Assets/DataStore.json");
-
+		string datastore = File.ReadAllText(@"./Assets/DataStore.json");
+		Debug.Log(datastore);
 		var lastsessid = File.ReadAllText(@"./Assets/sessid.txt");
-		Debug.Log(lastsessid);
 		sumSess.session.sessionId = Int32.Parse(lastsessid) + 1;
-	
-		// Appends single session object to end of list to write to new json file
-		sessions.Add(sumSess.session);
-		var updatedJson = JsonConvert.SerializeObject(sessions);
+		string updatedJson;
+		if(datastore == "")
+		{
+			updatedJson = JsonConvert.SerializeObject(sumSess.session);
+			updatedJson = string.Format("[{0}]", updatedJson);
+		}
+		else
+		{
+			List<SessionData> sessions = GetJsonSessions("./Assets/DataStore.json");
+			sessions.Add(sumSess.session);
+			updatedJson = JsonConvert.SerializeObject(sessions);
+		}
 		File.WriteAllText(@"./Assets/sessid.txt", sumSess.session.sessionId.ToString());
 		File.WriteAllText(@"./Assets/DataStore.json", updatedJson);
 	}
@@ -65,7 +72,6 @@ public class Summary : MonoBehaviour
 	{
 		WriteSession();
 		sumSess.session = new SessionData();
-		Application.Quit();
-		// UnityEditor.EditorApplication.isPlaying = false;
+		UnityEditor.EditorApplication.isPlaying = false;
 	}
 }
