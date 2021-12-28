@@ -32,6 +32,10 @@ public class ButtonData
     public int high = 0;
     public int medium = 0;
     public int low = 0;
+    public int helping = 0;
+    public int amused = 0;
+    public int conversing = 0;
+    public int neutral = 0;
 }
 public class Time
 {

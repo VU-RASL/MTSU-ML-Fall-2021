@@ -6,24 +6,24 @@ using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
+using System.Diagnostics;
 
 public class Summary : MonoBehaviour
 {
 	Session sumSess = Session.Instance;
 
-	public TMPro.TextMeshProUGUI HighTxt;
-	public TMPro.TextMeshProUGUI MidTxt;
-	public TMPro.TextMeshProUGUI LowTxt;
+	public TMPro.TextMeshProUGUI StressCount;
+	public TMPro.TextMeshProUGUI EngagementCount;
+	public TMPro.TextMeshProUGUI NeutalCount;
 	public TMPro.TextMeshProUGUI SessionTime;
 
 	void Start ()
 	{
 		sumSess.session.metaData.EndTime = DateTime.Now;
 		sumSess.session.metaData.lengthOfSession = DateTime.Now - sumSess.session.metaData.StartTime;
-		HighTxt.text = sumSess.session.data.buttons.high.ToString();
-		MidTxt.text = sumSess.session.data.buttons.medium.ToString();
-		LowTxt.text = sumSess.session.data.buttons.low.ToString();
+		StressCount.text = (sumSess.session.data.buttons.high + sumSess.session.data.buttons.medium + sumSess.session.data.buttons.low).ToString();
+		EngagementCount.text = (sumSess.session.data.buttons.helping + sumSess.session.data.buttons.conversing + sumSess.session.data.buttons.amused).ToString();
+		NeutalCount.text = (sumSess.session.data.buttons.neutral).ToString();
 		SessionTime.text = sumSess.session.metaData.lengthOfSession.ToString();
 	}
 
