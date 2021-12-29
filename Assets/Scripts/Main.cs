@@ -40,7 +40,7 @@ public class Main : MonoBehaviour
 
     public void MainToSummary() 
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene("Summary");
         //Transition to summary page
     }
     private void IncrementTotalCount() {

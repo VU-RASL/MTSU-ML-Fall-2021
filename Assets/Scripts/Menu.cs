@@ -27,7 +27,19 @@ public class Menu : MonoBehaviour
         menuSess.session.data.name = nameId;
         menuSess.session.data.patientId = id;
         menuSess.session.data.code = codeId;
- 
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("Main Page");
+    }
+
+    public void MenuToMainOffline()
+    {
+        string codeId = "", id = "", nameId = "";
+        codeId = CodeInputField.GetComponentInChildren<Text>().text;
+        id = PatientInputField.GetComponentInChildren<Text>().text;
+        nameId = NameInputField.GetComponentInChildren<Text>().text;
+        Session menuSess = Session.Instance;
+        menuSess.session.data.name = nameId;
+        menuSess.session.data.patientId = id;
+        menuSess.session.data.code = codeId;
+        SceneManager.LoadScene("Main Page - Offline");
     }
 }

@@ -37,7 +37,7 @@ public class Summary : MonoBehaviour
 	{
 		WriteSession();
 		sumSess.session = new SessionData();
-		SceneManager.LoadScene(0);
+		SceneManager.LoadScene("Menu Page");
 	}
 	public void WriteSession()
 	{
