@@ -24,6 +24,7 @@ public class Data
     public string name {get;set;} = "name";
     public string code {get;set;} = "";
     public string patientId {get;set;} = "";
+    public string type {get;set;} = "";
     public ButtonData buttons = new ButtonData();
     public List<Time> times = new List<Time>();
 }

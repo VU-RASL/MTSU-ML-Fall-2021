@@ -1252,7 +1252,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 566921781}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: c203061e7b996954090bde04fa48552a, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: c1601cdf72d06204eb424ce10f156fcd, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -1262,14 +1262,14 @@ VideoPlayer:
   m_TargetMaterialProperty: _MainTex
   m_RenderMode: 2
   m_AspectRatio: 2
-  m_DataSource: 0
+  m_DataSource: 1
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 2
   m_TargetAudioSources:
   - {fileID: 0}
   m_DirectAudioVolumes:
   - 1
-  m_Url: 
+  m_Url: http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1

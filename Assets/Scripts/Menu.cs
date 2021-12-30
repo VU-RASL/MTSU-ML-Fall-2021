@@ -27,6 +27,7 @@ public class Menu : MonoBehaviour
         menuSess.session.data.name = nameId;
         menuSess.session.data.patientId = id;
         menuSess.session.data.code = codeId;
+        menuSess.session.data.type = "Online";
         SceneManager.LoadScene("Main Page");
     }
 
@@ -40,6 +41,7 @@ public class Menu : MonoBehaviour
         menuSess.session.data.name = nameId;
         menuSess.session.data.patientId = id;
         menuSess.session.data.code = codeId;
+        menuSess.session.data.type = "Offline";
         SceneManager.LoadScene("Main Page - Offline");
     }
 }
